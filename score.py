@@ -7,11 +7,19 @@ class Score:
         self.score = Turtle()
         self.score.hideturtle()
         self.score.penup()
-        self.score.goto(0, 280)
+        self.score.goto(0, 270)
         self.score.color("white")
-        self.score.write(f"Score = {self.player_score}", align="center", font=('Poppins', 14, 'normal'))
+        self.refresh_score()
+
+    def refresh_score(self):
+        self.score.write(f"Score = {self.player_score}", align="center", font=('Courier', 18, 'normal'))
+
 
     def score_update(self):
         self.player_score += 1
         self.score.clear()  # Clear the previous score
-        self.score.write(f"Score = {self.player_score}", align="center", font=('Poppins', 14, 'normal'))
+        self.refresh_score()
+
+    def game_over(self):
+        self.score.goto(0, 0)
+        self.score.write("GAME OVER", align="center", font=('Courier', 22, 'normal'))
